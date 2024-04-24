@@ -31,7 +31,7 @@ services:
     network_mode: "host"
     # Volume mount to share TFTP files:
     volumes:
-      - "./share:/tftpshare"
+      - "./share/TFTP:/tftpshare"
     # Map container build context to TFTPserver container:
     build:
       context: .
@@ -43,12 +43,14 @@ services:
     ports:
       - "2000:22" # SSH access port
     # Mount local directories as volumes inside the container:
+    hostname: ansibleserver
+    restart: always
     volumes:
-      - "./inventory/:/ansible/inventory/"
-      - "./playbooks/playbooks.sh:/ansible/playbooks.sh"
-      - "./playbooks/:/ansible/playbooks/"
-      - "./config/hosts:/etc/hosts"
-      - "./libs/:/ansible/"
+      - "./share/inventory/:/ansible/inventory/"
+      - "./share/playbooks/playbooks.sh:/ansible/playbooks.sh"
+      - "./share/playbooks/:/ansible/playbooks/"
+      - "./serverAnsible/config/hosts:/etc/hosts"
+      - "./serverAnsible/libs/:/ansible/"
     build:
       context: .
-      dockerfile: ./app/Dockerfile
+      dockerfile: ./serverAnsible/Dockerfile
