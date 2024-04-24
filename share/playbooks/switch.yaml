@@ -1,0 +1,36 @@
+---
+
+  - name: Configuration for H3C devices from Capacita repository
+    hosts: sw1
+    gather_facts: no
+    connection: local
+
+    tasks:
+      - name: Creating VLAN 123 on the device
+        comware_vlan: vlanid=123 name=VLAN123 descr=VLAN-123-DATA state=present username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
+
+      - name: Creating VLAN 20 on the device
+        comware_vlan: vlanid=20 name=VLAN20 descr=VLAN-20-MANAGE state=present username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
+
+      - name: Removing VLAN 10 on the device
+        comware_vlan: vlanid=10 state=absent username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
+
+      - name: Configuring this interfaces with "no switchport" (routed) option
+        comware_interface: name={{ item }} type=routed username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
+        with_items:
+          - Ten-GigabitEthernet2/0/12
+          - Ten-GigabitEthernet2/0/17
+
+      - name: Change the configuration of "Ten-GigabitEthernet2/0/11" 
+        comware_interface: name={{ item }} description='INTERFACE CHANGED TO BRIDGE' type=bridged  username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
+        with_items:
+          - Ten-GigabitEthernet2/0/11
+
+      - name: Configuring a new IP address on the interface "Ten-GigabitEthernet2/0/12"
+        comware_ipinterface: name=Ten-GigabitEthernet2/0/12 addr=192.168.3.5 mask=255.255.255.0 username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
+
+      - name: Configuring a new IP address on the interface "Vlan-interface60"
+        comware_ipinterface: name=Vlan-interface60 addr=192.168.4.5 mask=255.255.255.0 username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
+
+      - name: Saving the configuration on the device...
+        comware_save: username={{ username }} password={{ password }} hostname={{ inventory_hostname }}

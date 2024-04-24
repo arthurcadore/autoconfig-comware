@@ -1,0 +1,54 @@
+# Main composition file for ZTP service using DHCP and TFTP servers: 
+# Author: Arthur Cadore M. Barcella
+# Github: arthurcadore
+# Capacitação Redes - PV Intelbras
+
+version: '3.8'
+services:
+  # DHCP server service:
+  dhcpserver:
+    container_name: dhcpserver
+    hostname: dhcpserver
+    restart: always
+    network_mode: "host"
+    # Capabilities to add to the container to allow DHCP server to run:
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      # - "./serverDHCP/dhcpd.leases:/var/lib/dhcp/dhcpd.leases"
+      - "./serverDHCP/dhcpd.conf:/etc/dhcp/dhcpd.conf"
+      - "./serverDHCP/dhcpd6.conf:/etc/dhcp/dhcpd6.conf"
+    # Map container build context to DHCPserver container:
+    build:
+      context: .
+      dockerfile: ./serverDHCP/Dockerfile
+
+  # TFTP server service:
+  tftpserver:
+    container_name: tftpserver
+    hostname: tftpserver
+    restart: always
+    network_mode: "host"
+    # Volume mount to share TFTP files:
+    volumes:
+      - "./share:/tftpshare"
+    # Map container build context to TFTPserver container:
+    build:
+      context: .
+      dockerfile: ./serverTFTP/Dockerfile
+
+  # Application container
+  ansibleserver:
+    container_name: ansibleserver
+    ports:
+      - "2000:22" # SSH access port
+    # Mount local directories as volumes inside the container:
+    volumes:
+      - "./inventory/:/ansible/inventory/"
+      - "./playbooks/playbooks.sh:/ansible/playbooks.sh"
+      - "./playbooks/:/ansible/playbooks/"
+      - "./config/hosts:/etc/hosts"
+      - "./libs/:/ansible/"
+    build:
+      context: .
+      dockerfile: ./app/Dockerfile

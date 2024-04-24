@@ -1,0 +1,31 @@
+all:
+  children:
+    switches:
+      hosts:
+        sw1:
+          ansible_host: 10.100.29.123
+          username: ansible
+          password: capacita#123
+        sw2:
+          ansible_host: 10.100.29.124
+          username: ansible2
+          password: capacita#1232
+        sw3:
+          ansible_host: 10.100.29.125
+          username: ansible3
+          password: capacita#1233
+    accesspoints:
+      hosts:
+        ap1:
+          ansible_host: 10.100.29.126
+          username: ansible4
+          password: capacita#1234
+        ap2:
+          ansible_host: 10.100.29.127
+          username: ansible5
+          password: capacita#1235
+        ap3:
+          ansible_host: 10.100.29.128
+          username: ansible6
+          password: capacita#1236
+
