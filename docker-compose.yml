@@ -51,6 +51,7 @@ services:
       - "./share/playbooks/:/ansible/playbooks/"
       - "./serverAnsible/config/hosts:/etc/hosts"
       - "./serverAnsible/libs/:/ansible/"
+      - "./share/configs/:/ansible/configs/"
     build:
       context: .
       dockerfile: ./serverAnsible/Dockerfile
