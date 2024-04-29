@@ -1,38 +1,38 @@
 ---
 
-  - name: Configuration for H3C devices from Capacita-Rework repository
-    hosts: sw1
-    gather_facts: no
-    connection: local
+- name: Configuration for H3C devices from Capacita-Rework repository
+  hosts: sw1
+  gather_facts: no
+  connection: local
 
-    tasks:
-      - name: Download the new configuration from FTP server... 
-        comware_file_copy: 
-        - username={{ username }} 
-        - password={{ password }}   
-        - hostname={{ inventory_hostname }}
-        - file='/ansible/configs/newstartup.cfg'
-        - remote_path='flash:/newstartup.cfg'
-        - ftpdownload=true 
+  tasks:
+    - name: Download the new configuration from FTP server
+      comware_file_copy: 
+        username: "{{ username }}" 
+        password: "{{ password }}"   
+        hostname: "{{ inventory_hostname }}"
+        file: "/ansible/configs/newstartup.cfg"
+        remote_path: "flash:/newstartup.cfg"
+        ftpdownload: true 
 
-      - name: Changing the Next Startup configuration file...
-        comware_startup:
-        - username={{ username }} 
-        - password={{ password }}   
-        - hostname={{ inventory_hostname }}
-        - nextstartupfile='flash:/newstartup.cfg'
+    - name: Changing the Next Startup configuration file
+      comware_startup:
+        username: "{{ username }}" 
+        password: "{{ password }}"   
+        hostname: "{{ inventory_hostname }}"
+        nextstartupfile: "flash:/newstartup.cfg"
 
-      - name: Verifing the configuration of the Uploaded file before restart... 
-        comware_startup:
-        - username={{ username }} 
-        - password={{ password }} 
-        - hostname={{ inventory_hostname }}
-        - filename='flash:/newstartup.cfg' 
-        - show_file='/ansible/configs/newstartup_copy.cfg' 
+    - name: Verifying the configuration of the Uploaded file before restart
+      comware_startup:
+        username: "{{ username }}" 
+        password: "{{ password }}" 
+        hostname: "{{ inventory_hostname }}"
+        filename: "flash:/newstartup.cfg" 
+        show_file: "/ansible/configs/newstartup_copy.cfg" 
 
-      - name: Rebooting the device... 
-        comware_reboot: 
-        - reboot=true 
-        - username={{ username }} 
-        - password={{ password }} 
-        - hostname={{ inventory_hostname }}
+    - name: Rebooting the device
+      comware_reboot: 
+        reboot: true 
+        username: "{{ username }}" 
+        password: "{{ password }}" 
+        hostname: "{{ inventory_hostname }}"
