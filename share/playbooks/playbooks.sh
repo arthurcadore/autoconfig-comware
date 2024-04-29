@@ -1,3 +1,3 @@
 
 ## Execute ansible example playbook
-ansible-playbook -i inventory/hosts switch.yaml
+ansible-playbook -i inventory/hosts scan.yaml

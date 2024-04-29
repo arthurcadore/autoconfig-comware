@@ -1,6 +1,14 @@
+---
+- name: Wait util a host be online... 
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Wait for SSH connection... 
+      wait_for_connection:
+        timeout: 300
 
 - name: Configuration for H3C devices from Capacita-Rework repository
-  hosts: sw1
+  hosts: alll
   gather_facts: no
   connection: local
 
@@ -19,7 +27,7 @@
         hostname: "{{ inventory_hostname }}"
         state: "enable"
 
-    - name: Download the configuration content from FTP to the device
+    - name: Download the configuration content from FTP to the device 
       comware_file_copy:
         username: "{{ username }}"
         password: "{{ password }}"
