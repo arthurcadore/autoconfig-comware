@@ -2,30 +2,201 @@ all:
   children:
     switches:
       hosts:
-        sw1:
-          ansible_host: 10.100.29.123
-          username: ansible
-          password: capacita#123
         sw2:
-          ansible_host: 10.100.29.124
-          username: ansible2
-          password: capacita#1232
+          ansible_host: 10.1.1.2
+          username: ansible
+          password: capacitapass#123
         sw3:
-          ansible_host: 10.100.29.125
-          username: ansible3
-          password: capacita#1233
-    accesspoints:
-      hosts:
-        ap1:
-          ansible_host: 10.100.29.126
-          username: ansible4
-          password: capacita#1234
-        ap2:
-          ansible_host: 10.100.29.127
-          username: ansible5
-          password: capacita#1235
-        ap3:
-          ansible_host: 10.100.29.128
-          username: ansible6
-          password: capacita#1236
+          ansible_host: 10.1.1.3
+          username: ansible
+          password: capacitapass#1232
+        sw4:
+          ansible_host: 10.1.1.4
+          username: ansible
+          password: capacitapass#1233
+        sw5:
+          ansible_host: 10.1.1.5
+          username: ansible
+          password: capacitapass#123
+        sw6:
+          ansible_host: 10.1.1.6
+          username: ansible
+          password: capacitapass#123
+        sw7:
+          ansible_host: 10.1.1.7
+          username: ansible
+          password: capacitapass#123
+        sw8:
+          ansible_host: 10.1.1.8
+          username: ansible
+          password: capacitapass#123
+        sw9:
+          ansible_host: 10.1.1.9
+          username: ansible
+          password: capacitapass#123
+        sw10:
+          ansible_host: 10.1.1.10
+          username: ansible
+          password: capacitapass#123
+        sw11:
+          ansible_host: 10.1.1.11
+          username: ansible
+          password: capacitapass#123
+        sw12:
+          ansible_host: 10.1.1.12
+          username: ansible
+          password: capacitapass#123
+        sw13:
+          ansible_host: 10.1.1.13
+          username: ansible
+          password: capacitapass#123
+        sw14:
+          ansible_host: 10.1.1.14
+          username: ansible
+          password: capacitapass#123
+        sw15:
+          ansible_host: 10.1.1.15
+          username: ansible
+          password: capacitapass#123
+        sw16:
+          ansible_host: 10.1.1.16
+          username: ansible
+          password: capacitapass#123
+        sw17:
+          ansible_host: 10.1.1.17
+          username: ansible
+          password: capacitapass#123
+        sw18:
+          ansible_host: 10.1.1.18
+          username: ansible
+          password: capacitapass#123
+        sw19:
+          ansible_host: 10.1.1.19
+          username: ansible
+          password: capacitapass#123
+        sw20:
+          ansible_host: 10.1.1.20
+          username: ansible
+          password: capacitapass#123
+        sw21:
+          ansible_host: 10.1.1.21
+          username: ansible
+          password: capacitapass#123
+        sw22:
+          ansible_host: 10.1.1.22
+          username: ansible
+          password: capacitapass#123
+        sw23:
+          ansible_host: 10.1.1.23
+          username: ansible
+          password: capacitapass#123
+        sw24:
+          ansible_host: 10.1.1.24
+          username: ansible
+          password: capacitapass#123
+        sw25:
+          ansible_host: 10.1.1.25
+          username: ansible
+          password: capacitapass#123
+        sw26:
+          ansible_host: 10.1.1.26
+          username: ansible
+          password: capacitapass#123
+        sw27:
+          ansible_host: 10.1.1.27
+          username: ansible
+          password: capacitapass#123
+        sw28:
+          ansible_host: 10.1.1.28
+          username: ansible
+          password: capacitapass#123
+        sw29:
+          ansible_host: 10.1.1.29
+          username: ansible
+          password: capacitapass#123
+        sw30:
+          ansible_host: 10.1.1.30
+          username: ansible
+          password: capacitapass#123
+        sw31:
+          ansible_host: 10.1.1.31
+          username: ansible
+          password: capacitapass#123
+        sw32:
+          ansible_host: 10.1.1.32
+          username: ansible
+          password: capacitapass#123
+        sw33:
+          ansible_host: 10.1.1.33
+          username: ansible
+          password: capacitapass#123
+        sw34:
+          ansible_host: 10.1.1.34
+          username: ansible
+          password: capacitapass#123
+        sw35:
+          ansible_host: 10.1.1.35
+          username: ansible
+          password: capacitapass#123
+        sw36:
+          ansible_host: 10.1.1.36
+          username: ansible
+          password: capacitapass#123
+        sw37:
+          ansible_host: 10.1.1.37
+          username: ansible
+          password: capacitapass#123
+        sw38:
+          ansible_host: 10.1.1.38
+          username: ansible
+          password: capacitapass#123
+        sw39:
+          ansible_host: 10.1.1.39
+          username: ansible
+          password: capacitapass#123
+        sw40:
+          ansible_host: 10.1.1.40
+          username: ansible
+          password: capacitapass#123
+        sw41:
+          ansible_host: 10.1.1.41
+          username: ansible
+          password: capacitapass#123
+        sw42:
+          ansible_host: 10.1.1.42
+          username: ansible
+          password: capacitapass#123
+        sw43:
+          ansible_host: 10.1.1.43
+          username: ansible
+          password: capacitapass#123
+        sw44:
+          ansible_host: 10.1.1.44
+          username: ansible
+          password: capacitapass#123
+        sw45:
+          ansible_host: 10.1.1.45
+          username: ansible
+          password: capacitapass#123
+        sw46:
+          ansible_host: 10.1.1.46
+          username: ansible
+          password: capacitapass#123
+        sw47:
+          ansible_host: 10.1.1.47
+          username: ansible
+          password: capacitapass#123
+        sw48:
+          ansible_host: 10.1.1.48
+          username: ansible
+          password: capacitapass#123
+        sw49:
+          ansible_host: 10.1.1.49
+          username: ansible
+          password: capacitapass#123
+        sw50:
+          ansible_host: 10.1.1.50
+          username: ansible
+          password: capacitapass#123
+
 
