@@ -10,7 +10,7 @@ RUN apt-get update && apt-get clean
 RUN apt-get install -y ansible python3 python3-pip openssh-server net-tools
 
 # Add startup script to container:
-COPY app/startup.sh /usr/sbin/startup.sh
+COPY serverAnsible/startup.sh /usr/sbin/startup.sh
 RUN chmod +x /usr/sbin/startup.sh
 
 # Starts and Mantain container running:
