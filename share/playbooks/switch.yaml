@@ -1,4 +1,3 @@
----
 
 - name: Configuration for H3C devices from Capacita-Rework repository
   hosts: sw1
@@ -20,29 +19,28 @@
         hostname: "{{ inventory_hostname }}"
         state: "enable"
 
-    - name: Download the new configuration from FTP server
+    - name: Download the configuration content from FTP to the device
       comware_file_copy:
         username: "{{ username }}"
         password: "{{ password }}"
         hostname: "{{ inventory_hostname }}"
         file: "/ansible/configs/newstartup.cfg"
-        remote_path: "flash:/newstartup.cfg"
-        ftpdownload: "true"
+        remote_path: "flash:/newstartup2.cfg"
 
     - name: Changing the Next Startup configuration file
       comware_startup:
         username: "{{ username }}"
         password: "{{ password }}"
         hostname: "{{ inventory_hostname }}"
-        nextstartupfile: "flash:/newstartup.cfg"
+        nextstartupfile: "flash:/newstartup2.cfg"
 
     - name: Verifying the configuration of the Uploaded file before restart
       comware_startup:
         username: "{{ username }}"
         password: "{{ password }}"
         hostname: "{{ inventory_hostname }}"
-        filename: "flash:/newstartup.cfg"
-        show_file: "/ansible/configs/newstartup_copy.cfg"
+        filename: "flash:/newstartup2.cfg"
+        show_file: "/ansible/configs/newstartup_copy2.cfg"
 
     - name: Rebooting the device
       comware_reboot:
@@ -50,3 +48,4 @@
         username: "{{ username }}"
         password: "{{ password }}"
         hostname: "{{ inventory_hostname }}"
+
