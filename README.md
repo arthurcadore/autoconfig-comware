@@ -1,4 +1,4 @@
-# capacita-reworks
+# AutoConfiguration Appliance for Comware7 H3C Devices
 
 #### This repository implements ZTP + Ansible Appliances to upload a default configuration file to the device and provisioning it into Ansible for custom configurations. 
 
