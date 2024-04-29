@@ -1,24 +1,19 @@
 ---
-- name: Wait util a host be online... 
-  hosts: all
-  gather_facts: no
-  tasks:
-    - name: Wait for SSH connection... 
-      wait_for_connection:
-        timeout: 300
-
 - name: Configuration for H3C devices from Capacita-Rework repository
-  hosts: alll
+  hosts: all
   gather_facts: no
   connection: local
 
   tasks:
-    - name: Creating a new file using save command...
-      comware_save:
-        username: "{{ username }}"
-        password: "{{ password }}"
-        hostname: "{{ inventory_hostname }}"
-        filename: "newstartup.cfg"
+    - name: Verifying if device is online
+      wait_for:
+        host: "{{ inventory_hostname }}"
+        port: 22
+        delay: 10
+        timeout: 5
+        state: started
+      delegate_to: localhost
+      ignore_errors: yes
 
     - name: Enabling FTP server on the device...
       comware_ftp:
@@ -26,29 +21,33 @@
         password: "{{ password }}"
         hostname: "{{ inventory_hostname }}"
         state: "enable"
+      ignore_errors: yes
 
-    - name: Download the configuration content from FTP to the device 
+    - name: Download the configuration content from FTP to the device
       comware_file_copy:
         username: "{{ username }}"
         password: "{{ password }}"
         hostname: "{{ inventory_hostname }}"
         file: "/ansible/configs/newstartup.cfg"
-        remote_path: "flash:/newstartup2.cfg"
+        remote_path: "flash:/newstartup3.cfg"
+      ignore_errors: yes
 
     - name: Changing the Next Startup configuration file
       comware_startup:
         username: "{{ username }}"
         password: "{{ password }}"
         hostname: "{{ inventory_hostname }}"
-        nextstartupfile: "flash:/newstartup2.cfg"
+        nextstartupfile: "flash:/newstartup3.cfg"
+      ignore_errors: yes
 
     - name: Verifying the configuration of the Uploaded file before restart
       comware_startup:
         username: "{{ username }}"
         password: "{{ password }}"
         hostname: "{{ inventory_hostname }}"
-        filename: "flash:/newstartup2.cfg"
-        show_file: "/ansible/configs/newstartup_copy2.cfg"
+        filename: "flash:/newstartup3.cfg"
+        show_file: "/ansible/configs/newstartup_copy3.cfg"
+      ignore_errors: yes
 
     - name: Rebooting the device
       comware_reboot:
@@ -56,4 +55,5 @@
         username: "{{ username }}"
         password: "{{ password }}"
         hostname: "{{ inventory_hostname }}"
+      ignore_errors: yes
 

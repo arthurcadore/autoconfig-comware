@@ -48,7 +48,7 @@ services:
     volumes:
       - "./share/inventory/:/ansible/inventory/"
       - "./share/playbooks/playbooks.sh:/ansible/playbooks.sh"
-      - "./share/playbooks/:/ansible/playbooks/"
+      - "./share/playbooks/runner.yaml:/ansible/runner.yaml"
       - "./serverAnsible/config/hosts:/etc/hosts"
       - "./serverAnsible/libs/:/ansible/"
       - "./share/configs/:/ansible/configs/"
