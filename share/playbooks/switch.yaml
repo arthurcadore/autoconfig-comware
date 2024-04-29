@@ -6,33 +6,47 @@
   connection: local
 
   tasks:
+    - name: Creating a new file using save command...
+      comware_save:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        hostname: "{{ inventory_hostname }}"
+        filename: "newstartup.cfg"
+
+    - name: Enabling FTP server on the device...
+      comware_ftp:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        hostname: "{{ inventory_hostname }}"
+        state: "enable"
+
     - name: Download the new configuration from FTP server
-      comware_file_copy: 
-        username: "{{ username }}" 
-        password: "{{ password }}"   
+      comware_file_copy:
+        username: "{{ username }}"
+        password: "{{ password }}"
         hostname: "{{ inventory_hostname }}"
         file: "/ansible/configs/newstartup.cfg"
         remote_path: "flash:/newstartup.cfg"
-        ftpdownload: true 
+        ftpdownload: "true"
 
     - name: Changing the Next Startup configuration file
       comware_startup:
-        username: "{{ username }}" 
-        password: "{{ password }}"   
+        username: "{{ username }}"
+        password: "{{ password }}"
         hostname: "{{ inventory_hostname }}"
         nextstartupfile: "flash:/newstartup.cfg"
 
     - name: Verifying the configuration of the Uploaded file before restart
       comware_startup:
-        username: "{{ username }}" 
-        password: "{{ password }}" 
+        username: "{{ username }}"
+        password: "{{ password }}"
         hostname: "{{ inventory_hostname }}"
-        filename: "flash:/newstartup.cfg" 
-        show_file: "/ansible/configs/newstartup_copy.cfg" 
+        filename: "flash:/newstartup.cfg"
+        show_file: "/ansible/configs/newstartup_copy.cfg"
 
     - name: Rebooting the device
-      comware_reboot: 
-        reboot: true 
-        username: "{{ username }}" 
-        password: "{{ password }}" 
+      comware_reboot:
+        reboot: true
+        username: "{{ username }}"
+        password: "{{ password }}"
         hostname: "{{ inventory_hostname }}"
