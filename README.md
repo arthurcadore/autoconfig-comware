@@ -35,15 +35,15 @@ If you don't have Docker (and Docker-compose) installed on your system yet, it c
 
 In sequence, configure the environment archives for the application containers, you can do this by edditing the files in /share/ directory:
 ```
-TFTP -> Files to be download from TFTP server for device auto-configuration
-Inventory -> Inventory files used by ansible to configurate the specific devices
-Playbooks -> Playbook files used to list the configurations the Ansible need to perform. 
+share/configs/ -> Add new configuration files that the devices will receive using FTP. 
+inventory/hosts.yaml -> Reconfigure the inventory variables to list the devices that will be configured.
+config/hosts -> Add the devices name resolution (FQDN) to ansible can resolve them. 
+playbooks/switch.yaml -> Change the playbook actions that ansible will perform. 
 ```
 
-You also need to configure the server parameters, you can do this by edditing the files below: 
+You also can to configure the server parameters, you can do this by edditing the files below (not necessary if network IP range don't change): 
 ```
 serverDHCP/dhcpd.conf -> Update the DHCP parameters to your custom topology
-serverAnsible/config/hosts -> Update the Hosts list to your custom topology
 ```
 
 ### Start Application's Container:
