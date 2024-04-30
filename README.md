@@ -66,9 +66,10 @@ To do that, Ansible copy the file located at `share/configs` to the device and c
 In the example below, the playbook script is applied to all 16 devices reported on `./share/inventory/hosts.yaml`:
 
 ```
+ansibleserver  |
 ansibleserver  | ###################################################################
 ansibleserver  | Execute playbooks script...
-ansibleserver  | ##################################
+ansibleserver  | ###################################################################
 ansibleserver  | Cicle N°: 1
 ansibleserver  |
 ansibleserver  |
@@ -114,42 +115,24 @@ Note that all configurations logged as "error" in this scenario are expected. Th
 When finished, it will list all changes made on the devices listed on inventory that it could connect to, and after, start a new configuration cicle:
 
 ```
-ansibleserver  | TASK [Rebooting the device] ****************************************************
-ansibleserver  | changed: [sw6]
-ansibleserver  | changed: [sw3]
-ansibleserver  | changed: [sw4]
-ansibleserver  | changed: [sw5]
-ansibleserver  | changed: [sw2]
-ansibleserver  | changed: [sw7]
-ansibleserver  | changed: [sw9]
-ansibleserver  | changed: [sw8]
-ansibleserver  | changed: [sw10]
-ansibleserver  | changed: [sw11]
-ansibleserver  | changed: [sw12]
-ansibleserver  | changed: [sw14]
-ansibleserver  | changed: [sw13]
-ansibleserver  | changed: [sw15]
-ansibleserver  | changed: [sw16]
-ansibleserver  |
 ansibleserver  | PLAY RECAP *********************************************************************
-ansibleserver  | sw10                       : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
-ansibleserver  | sw11                       : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
-ansibleserver  | sw12                       : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
-ansibleserver  | sw13                       : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
-ansibleserver  | sw14                       : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
-ansibleserver  | sw15                       : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
-ansibleserver  | sw16                       : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
-ansibleserver  | sw2                        : ok=5    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1
-ansibleserver  | sw3                        : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
-ansibleserver  | sw4                        : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
-ansibleserver  | sw5                        : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
-ansibleserver  | sw6                        : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
-ansibleserver  | sw7                        : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
-ansibleserver  | sw8                        : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
-ansibleserver  | sw9                        : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
+ansibleserver  | sw10  : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
+ansibleserver  | sw11  : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
+ansibleserver  | sw12  : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
+ansibleserver  | sw13  : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
+ansibleserver  | sw14  : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
+ansibleserver  | sw15  : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
+ansibleserver  | sw16  : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
+ansibleserver  | sw2   : ok=5    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1
+ansibleserver  | sw3   : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
+ansibleserver  | sw4   : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
+ansibleserver  | sw5   : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
+ansibleserver  | sw6   : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
+ansibleserver  | sw7   : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
+ansibleserver  | sw8   : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
+ansibleserver  | sw9   : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4
 ansibleserver  |
-
-ansibleserver  | ##################################
+ansibleserver  | ###################################################################
 ansibleserver  | Cicle N°: 2
 ```
 
