@@ -3,7 +3,6 @@
   hosts: all
   gather_facts: no
   connection: local
-
   tasks:
     - name: Enabling FTP server on the device...
       comware_ftp:
@@ -13,7 +12,7 @@
         state: "enable"
       ignore_errors: yes
 
-    - name: Download the configuration content from FTP to the device
+    - name: Downloading the configuration content from FTP to the device...
       comware_file_copy:
         username: "{{ username }}"
         password: "{{ password }}"
@@ -22,7 +21,7 @@
         remote_path: "flash:/newstartup3.cfg"
       ignore_errors: yes
 
-    - name: Changing the Next Startup configuration file
+    - name: Changing the Next Startup configuration file...
       comware_startup:
         username: "{{ username }}"
         password: "{{ password }}"
@@ -30,7 +29,7 @@
         nextstartupfile: "flash:/newstartup3.cfg"
       ignore_errors: yes
 
-    - name: Verifying the configuration of the Uploaded file before restart
+    - name: Verifying the configuration of the Uploaded file before restart...
       comware_startup:
         username: "{{ username }}"
         password: "{{ password }}"
@@ -39,11 +38,13 @@
         show_file: "/ansible/configs/newstartup_copy3.cfg"
       ignore_errors: yes
 
-    - name: Rebooting the device
+    - name: Rebooting the device...
       comware_reboot:
         reboot: true
         username: "{{ username }}"
         password: "{{ password }}"
         hostname: "{{ inventory_hostname }}"
+      async: 3
+      poll: 0
       ignore_errors: yes
 
