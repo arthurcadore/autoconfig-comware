@@ -5,9 +5,9 @@
 ---
 Prerequisites Before you begin, ensure you have the following packages installed on your system:
 
-Git version 2.34.1
-Docker version 24.0.6, build ed223bc
-Docker Compose version v2.21.0
+- Git version 2.34.1
+- Docker version 24.0.6, build ed223bc
+- Docker Compose version v2.21.0
 
 ### Getting Started: 
 
