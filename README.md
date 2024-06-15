@@ -28,7 +28,7 @@ cd ./capacita-puppet
 If you don't have Docker (and Docker-compose) installed on your system yet, it can be installed by run the following commands (Script for Ubuntu 22.04):
 
 ```
-./docker/installDocker.sh
+./installDocker.sh
 ```
 
 **If you had to install docker, please remember to reboot you machine to grant user privileges for docker application.**
