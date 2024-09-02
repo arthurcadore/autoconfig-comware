@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy the configuration file to the container:
-COPY serverDHCP/startup.sh /usr/local/bin/startup.sh
+COPY docker/startup-dhcpd.sh /usr/local/bin/startup.sh
 
 # Set the file as executable:
 RUN chmod +x /usr/local/bin/startup.sh
