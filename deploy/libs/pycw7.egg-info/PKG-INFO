@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: pycw7
+Version: 0.0.11
+Summary: Python package to simplify working with H3C Comware7 Based devices 
+Home-page: https://github.com/H3C/pycw7
+Author: H3C
+License: Apache2
+Download-URL: https://github.com/H3C/pycw7/tarball/0.0.9
+Keywords: H3C Comware7 FlexFabric Netconf API
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+License-File: LICENSE
+
+UNKNOWN
+

@@ -1,0 +1,6 @@
+ipaddr>=2.1.11
+lxml
+ncclient
+paramiko
+scp
+textfsm==1.1.0
