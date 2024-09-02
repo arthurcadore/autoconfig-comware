@@ -28,6 +28,6 @@ RUN chmod 664 /var/lib/dhcp/dhcpd.leases
 
 RUN mkdir -p /var/log/supervisor /etc/supervisor/conf.d
 
-COPY ./docker/supervisor-dhcpd.conf /etc/supervisord.conf
+COPY ./docker/supervisord-dhcpd.conf /etc/supervisord.conf
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
