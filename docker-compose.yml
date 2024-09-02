@@ -20,7 +20,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/Dockerfile-Ansible
-      
+
   # DHCP server container:
   dhcpserver:
     container_name: dhcpserver
@@ -49,4 +49,4 @@ services:
       - "./shared:/tftpshare"
     build:
       context: .
-      dockerfile: ./docker/Dockerfile-TFTP
+      dockerfile: ./docker/Dockerfile-tftp
