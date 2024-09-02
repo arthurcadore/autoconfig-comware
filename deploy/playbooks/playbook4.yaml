@@ -1,0 +1,49 @@
+---
+- name: Configuration for H3C devices from Capacita-Rework repository
+  hosts: all
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: Enabling FTP server on the device...
+      comware_ftp:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        hostname: "{{ inventory_hostname }}"
+        state: "enable"
+      ignore_errors: yes
+
+    - name: Downloading the configuration content from FTP to the device...
+      comware_file_copy:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        hostname: "{{ inventory_hostname }}"
+        file: "/ansible/shared/startupexample.cfg"
+        remote_path: "flash:/startupexample.cfg"
+      ignore_errors: yes
+
+    - name: Changing the Next Startup configuration file...
+      comware_startup:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        hostname: "{{ inventory_hostname }}"
+        nextstartupfile: "flash:/startupexample.cfg"
+      ignore_errors: yes
+
+    - name: Verifying the configuration of the Uploaded file before restart...
+      comware_startup:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        hostname: "{{ inventory_hostname }}"
+        filename: "flash:/startupexample.cfg"
+        show_file: "/ansible/shared/startupexample_copy.cfg"
+      ignore_errors: yes
+
+    - name: Rebooting the device...
+      comware_reboot:
+        reboot: true
+        username: "{{ username }}"
+        password: "{{ password }}"
+        hostname: "{{ inventory_hostname }}"
+      async: 3
+      poll: 0
+      ignore_errors: yes

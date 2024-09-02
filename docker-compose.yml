@@ -8,6 +8,7 @@ services:
   ansibleserver:
     container_name: AnsibleServer
     volumes:
+      - "./shared/:/ansible/shared/"    
       - "./deploy/inventory/:/ansible/inventory/"
       - "./deploy/playbooks/:/ansible/playbooks/"
       - "./config/hosts.cfg:/etc/hosts"
@@ -19,3 +20,34 @@ services:
     build:
       context: .
       dockerfile: ./docker/Dockerfile-Ansible
+
+services:
+  # DHCP server container:
+  dhcpserver:
+    container_name: dhcpserver
+    hostname: dhcpserver
+    restart: always
+    network_mode: "host"
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - "./logs/:/var/lib/dhcp/"
+      - "./config/dhcpd.conf:/etc/dhcp/dhcpd.conf"
+    # Map container build context to DHCPserver container:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-dhcpd
+
+  # TFTP server container:
+  tftpserver:
+    container_name: tftpserver
+    hostname: tftpserver
+    restart: always
+    network_mode: "host"
+    ports:
+      - "514:514/udp"
+    volumes:
+      - "./shared:/tftpshare"
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-TFTP
