@@ -22,4 +22,4 @@ ps aux
 netstat -lnu
 
 # Keep the container running
-tail -f /dev/nul
+tail -f /dev/null

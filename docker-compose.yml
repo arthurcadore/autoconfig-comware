@@ -17,6 +17,9 @@ services:
       - "./env/namespaces.py:/ansible/pycw7/utils/xml/namespaces.py"
     env_file:
       - ./env/.env_ansible
+    network_mode: "host"
+    cap_add:
+      - NET_ADMIN
     build:
       context: .
       dockerfile: ./docker/Dockerfile-Ansible
@@ -44,6 +47,8 @@ services:
     hostname: tftpserver
     restart: always
     network_mode: "host"
+    cap_add:
+      - NET_ADMIN
     ports:
       - "514:514/udp"
     volumes:
