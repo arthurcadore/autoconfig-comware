@@ -20,8 +20,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/Dockerfile-Ansible
-
-services:
+      
   # DHCP server container:
   dhcpserver:
     container_name: dhcpserver
