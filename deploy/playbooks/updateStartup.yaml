@@ -1,5 +1,5 @@
 ---
-- name: Configuration for H3C devices from Capacita-Rework repository
+- name: Configuration for StartupConfig File Update - Intelbras Devices
   hosts: all
   gather_facts: no
   connection: local

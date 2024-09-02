@@ -1,5 +1,5 @@
 ---
-- name: Configuration for H3C devices from Capacita repository
+- name: Tird Configuration Example - Intelbras Devices
   hosts: all
   gather_facts: no
   connection: local
