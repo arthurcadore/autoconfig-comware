@@ -11,23 +11,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     supervisor \
     && rm -rf /var/lib/apt/lists/*
 
-RUN touch /var/lib/dhcp/dhcpd.leases
-
-RUN chown root:root /var/lib/dhcp/dhcpd.leases
-
-RUN chmod 664 /var/lib/dhcp/dhcpd.leases
-
 # Copy the configuration file to the container:
-#COPY serverDHCP/startup.sh /usr/local/bin/startup.sh
+COPY serverDHCP/startup.sh /usr/local/bin/startup.sh
 
 # Set the file as executable:
-#RUN chmod +x /usr/local/bin/startup.sh
+RUN chmod +x /usr/local/bin/startup.sh
 
-# Start the DHCP server and keep it running:
-#CMD ["/usr/local/bin/startup.sh"]
-
+# Configuring Supervisord: 
 RUN mkdir -p /var/log/supervisor /etc/supervisor/conf.d
-
 COPY ./docker/supervisord-dhcpd.conf /etc/supervisord.conf
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
