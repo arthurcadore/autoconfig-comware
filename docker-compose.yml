@@ -32,6 +32,7 @@ services:
     volumes:
       - "./logs/:/var/lib/dhcp/"
       - "./config/dhcpd.conf:/etc/dhcp/dhcpd.conf"
+      - "./config/dhcpd6.conf:/etc/dhcp/dhcpd6.conf"
     # Map container build context to DHCPserver container:
     build:
       context: .

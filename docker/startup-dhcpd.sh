@@ -1,4 +1,3 @@
-devapps@devapps:~/autoconfig-comware$ cat docker/startup-dhcpd.sh
 #!/bin/bash
 # Author: Arthur Cadore M. Barcella
 # Github: arthurcadore

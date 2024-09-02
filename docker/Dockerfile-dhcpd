@@ -21,4 +21,7 @@ RUN chmod +x /usr/local/bin/startup.sh
 RUN mkdir -p /var/log/supervisor /etc/supervisor/conf.d
 COPY ./docker/supervisord-dhcpd.conf /etc/supervisord.conf
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+# CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+
+# Start the DHCP server and keep it running:
+CMD ["/usr/local/bin/startup.sh"]
