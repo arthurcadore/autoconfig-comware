@@ -36,7 +36,7 @@ If you don't have Docker (and Docker-compose) installed on your system yet, it c
 In sequence, configure the environment files for the application container, you can do this by edditing the following files: 
 
 #### config/hosts -> add new hosts domain names:
-```
+```conf
 10.1.1.1 sw1
 10.1.1.2 sw2
 10.1.1.3 sw3
@@ -71,7 +71,7 @@ subnet 10.1.1.0 netmask 255.255.255.0 {
 ```
 
 #### deploy/playbooks/ -> add the playbook configuration you want to be applied on device, like the configuration below:
-```
+```yaml
 ---
 - name: First Configuration Example - Intelbras Devices
   hosts: all
@@ -98,7 +98,7 @@ subnet 10.1.1.0 netmask 255.255.255.0 {
 #### you can add any other playbook archives if you want to the directory `deploy/playbooks`, but after remember to include it into `playbooks.sh` script for execution.  
 
 #### /deploy/inventory/ -> configure the devices paramters as user, password and other parameters. 
-```
+```yaml
 all:
   children:
     switches:
