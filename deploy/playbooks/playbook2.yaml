@@ -1,0 +1,34 @@
+---
+- name: Configuration for H3C devices from Capacita repository
+  hosts: all
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: Configuring this interfaces with "no switchport" (routed) option
+      comware_interface: 
+        username: "{{ username }}" 
+        password: "{{ password }}" 
+        hostname: "{{ inventory_hostname }}"
+        name: "{{ item }}" 
+        type: "routed"
+      with_items:
+        - Ten-GigabitEthernet1/0/12
+        - Ten-GigabitEthernet1/0/17
+
+    - name: Change the configuration of "Ten-GigabitEthernet2/0/11" 
+      comware_interface: 
+        username: "{{ username }}" 
+        password: "{{ password }}" 
+        hostname: "{{ inventory_hostname }}"
+        name: "{{ item }}"
+        description: "INTERFACE CHANGED TO BRIDGE"
+        type: "bridged"
+      with_items:
+        - Ten-GigabitEthernet1/0/11
+
+    - name: Saving the configuration on the device...
+      comware_save: 
+        username: "{{ username }}" 
+        password: "{{ password }}" 
+        hostname: "{{ inventory_hostname }}"

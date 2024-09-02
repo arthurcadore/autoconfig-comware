@@ -1,0 +1,35 @@
+all:
+  children:
+    switches:
+      hosts:
+        sw1:
+          username: admin
+          password: Admin@1234
+        sw2:
+          username: admin
+          password: Admin@1234
+        sw3:
+          username: admin
+          password: Admin@1234
+    accesspoints:
+      hosts:
+        ap1:
+          username: admin
+          password: Admin@1234
+        ap2:
+          username: admin
+          password: Admin@1234
+        ap3:
+          username: admin
+          password: Admin@1234
+    controllers:
+      hosts:
+        wc1:
+          username: admin
+          password: Admin@1234
+        wc2:
+          username: admin
+          password: Admin@1234
+        wc3:
+          username: admin
+          password: Admin@1234

@@ -1,0 +1,21 @@
+# Main composition file for Ansbile Application Container.
+# Author: Arthur Cadore M. Barcella
+# Github: arthurcadore
+
+version: '3.8'
+services:
+  # Ansible App container
+  ansibleserver:
+    container_name: AnsibleServer
+    volumes:
+      - "./deploy/inventory/:/ansible/inventory/"
+      - "./deploy/playbooks/:/ansible/playbooks/"
+      - "./config/hosts.cfg:/etc/hosts"
+      - "./deploy/libs/:/ansible/"
+      - "./env/namespaces.py:/usr/local/lib/python3.10/dist-packages/pycw7-0.0.11-py3.10.egg/pycw7/utils/xml/namespaces.py"
+      - "./env/namespaces.py:/ansible/pycw7/utils/xml/namespaces.py"
+    env_file:
+      - ./env/.env_ansible
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-Ansible

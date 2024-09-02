@@ -1,0 +1,30 @@
+---
+- name: Configuration for H3C devices from Capacita repository
+  hosts: all
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: Configuring a new IP address on the interface "Ten-GigabitEthernet2/0/12"
+      comware_ipinterface: 
+        username: "{{ username }}" 
+        password: "{{ password }}" 
+        hostname: "{{ inventory_hostname }}"
+        name: "Ten-GigabitEthernet1/0/12" 
+        addr: "192.168.3.5" 
+        mask: "255.255.255.0"
+
+    - name: Configuring a new IP address on the interface "Vlan-interface60"
+      comware_ipinterface: 
+        username: "{{ username }}" 
+        password: "{{ password }}" 
+        hostname: "{{ inventory_hostname }}"
+        name: "Vlan60" 
+        addr: "192.168.4.5" 
+        mask: "255.255.255.0"
+
+    - name: Saving the configuration on the device...
+      comware_save: 
+        username: "{{ username }}" 
+        password: "{{ password }}" 
+        hostname: "{{ inventory_hostname }}"

@@ -1,0 +1,40 @@
+---
+- name: Configuration for H3C devices from Capacita repository
+  hosts: all
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: Creating VLAN 123 on the device
+      comware_vlan: 
+        username: "{{ username }}" 
+        password: "{{ password }}" 
+        hostname: "{{ inventory_hostname }}"
+        vlanid: "123" 
+        name: "VLAN123" 
+        descr: "VLAN-123-DATA"
+        state: "present"
+
+    - name: Creating VLAN 20 on the device
+      comware_vlan: 
+        username: "{{ username }}" 
+        password: "{{ password }}" 
+        hostname: "{{ inventory_hostname }}"
+        vlanid: "20" 
+        name: "VLAN20" 
+        descr: "VLAN-20-MANAGE"
+        state: "present"
+
+    - name: Removing VLAN 10 on the device
+      comware_vlan: 
+        username: "{{ username }}" 
+        password: "{{ password }}" 
+        hostname: "{{ inventory_hostname }}"
+        vlanid: "10" 
+        state: "absent"
+
+    - name: Saving the configuration on the device...
+      comware_save: 
+        username: "{{ username }}" 
+        password: "{{ password }}" 
+        hostname: "{{ inventory_hostname }}"
